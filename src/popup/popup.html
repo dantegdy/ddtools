@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link rel="stylesheet" href="./popup.css" />
+    <link rel="stylesheet" href="../js/layui/css/layui.css" />
+    <script src="../js/layui/layui.js"></script>
+    <!-- <script src="../jquery-1.8.3.js"></script> -->
+  </head>
+  <body>
+    <!-- <button id="changeColor"></button> -->
+    <div class="container">
+      <header>
+        <div>点点开黑工具</div>
+      </header>
+      <hr />
+      <div class="layui-form content">
+        <!-- <div class="config_box"> -->
+        <label class="layui-form-label">默认房间号</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            name="title"
+            required
+            lay-verify="required"
+            placeholder="请输入房间号"
+            id="roomId"
+            autocomplete="off"
+            class="layui-input config_input__room"
+          />
+          <button
+            type="button"
+            id="goRoomBtn"
+            class="layui-btn layui-btn-normal layui-btn-radius btn_room"
+          >
+            进入房间
+          </button>
+        </div>
+        <!-- </div> -->
+        <div class="config_box">
+          <div class="config_header">
+            <span class="config_title">进入房间公屏欢迎</span>
+            <div class="config_checkbox">
+              <input
+                type="checkbox"
+                name="xxx"
+                id="welcomeSwitch"
+                lay-skin="switch"
+                lay-text="开启|关闭"
+              />
+            </div>
+            <div>可使用变量: 用户名：[name] ; 冠名: [host]</div>
+          </div>
+          <div class="config_input">
+            <input
+              type="text"
+              name="title"
+              id="welcomeStr"
+              required
+              lay-verify="required"
+              placeholder="请输入欢迎词"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="config_box">
+          <div class="config_header">
+            <span class="config_title">送礼物自动感谢</span>
+            <div class="config_checkbox">
+              <input
+                type="checkbox"
+                name="yyy"
+                id="thankSwitch"
+                lay-skin="switch"
+                lay-text="开启|关闭"
+              />
+            </div>
+            <div>可使用变量: 用户名：[name]</div>
+          </div>
+          <div class="config_input">
+            <input
+              type="text"
+              name="title"
+              required
+              id="thankStr"
+              lay-verify="required"
+              placeholder="请输入感谢词"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="config_box">
+          <div class="config_header">
+            <span class="config_title">自动刷屏</span>
+            <div class="config_checkbox">
+              <input
+                type="checkbox"
+                name="zzz"
+                id="spammingSwitch"
+                lay-skin="switch"
+                lay-text="开启|关闭"
+              />
+            </div>
+          </div>
+          <div class="config_input">
+            <span style="font-size: 14px">刷屏间隔时间(秒)</span>
+            <input
+              type="text"
+              name="title"
+              required
+              id="spammingTime"
+              lay-verify="required"
+              placeholder="请输入秒"
+              autocomplete="off"
+              class="layui-input config_input__time"
+            />
+          </div>
+          <div class="config_input">
+            <textarea
+              name=""
+              required
+              id="spammingStr"
+              lay-verify="required"
+              placeholder="请输入内容,多条请使用/斜杠分割,按顺序发送弹幕池里的内容"
+              class="layui-textarea"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <footer>
+        <button type="button" id="saveBtn" class="layui-btn layui-btn-normal">
+          保存设置
+        </button>
+        <button
+          type="button"
+          id="defaultBtn"
+          class="layui-btn layui-btn-normal"
+        >
+          恢复默认
+        </button>
+      </footer>
+    </div>
+    <script src="../js/jquery-1.8.3.js"></script>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+.container {
+  width: 400px;
+  max-height: 700px;
+  background-color: #fff;
+  color: #200828;
+}
+
+header {
+  color: #277bc0;
+  text-align: center;
+  font-size: 24px;
+  padding: 6px 0;
+}
+
+footer {
+  padding: 6px 0 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.config_box {
+  border-radius: 5px;
+  padding: 0px 6px 12px;
+  background-color: #fff4cf;
+  margin: 6px 12px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.config_title {
+  color: #277bc0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.config_checkbox {
+  padding-left: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+.config_input {
+  padding-top: 6px;
+}
+.config_input__room,
+.config_input__time {
+  display: inline-block !important;
+  width: 150px !important;
+}
+.btn_room {
+  display: inline-block;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "点点工具库",
+  "description": "适用于点点开黑平台队长/主持的浏览器工具插件，可以自动欢迎和自动感谢礼物",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "/images/notice_avatar.png",
+      "32": "/images/notice_avatar.png",
+      "48": "/images/notice_avatar.png",
+      "128": "/images/notice_avatar.png"
+    }
+  },
+  "icons": {
+    "16": "/images/notice_avatar.png",
+    "32": "/images/notice_avatar.png",
+    "48": "/images/notice_avatar.png",
+    "128": "/images/notice_avatar.png"
+  }
+}
