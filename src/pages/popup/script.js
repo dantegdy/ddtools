@@ -6,7 +6,7 @@ class Switch {
         chrome.scripting.executeScript(
           {
             target: { tabId, allFrames: true },
-            files: ["src/js/jquery-1.8.3.js"],
+            files: ["/js/jquery-1.8.3.js"],
           },
           () => {
             chrome.scripting.executeScript({
@@ -63,12 +63,21 @@ function welcomeOffFunc() {
 
 function thankOnFunc() {
   let fromGift = "";
-  let nn = $(".chat-gift-main:last").text().trim();
+  let nn = $(".chat-gift-main:last")
+    .text()
+    .trim();
   window.thankTime = setInterval(() => {
-    if (nn != $(".chat-gift-main:last").text().trim()) {
+    if (
+      nn !=
+      $(".chat-gift-main:last")
+        .text()
+        .trim()
+    ) {
       chrome.storage.local.get(["formData"], (data) => {
         const { thankStr } = data.formData;
-        nn = $(".chat-gift-main:last").text().trim();
+        nn = $(".chat-gift-main:last")
+          .text()
+          .trim();
         const uname = $(".chat-gift-content:last span:first").text();
         fromGift = thankStr;
         fromGift = fromGift.replace("[gift]", nn);
