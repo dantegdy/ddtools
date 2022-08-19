@@ -1,8 +1,7 @@
-console.log("content loaded");
+console.log('content loaded');
 
 /**
  * @description
  * Chrome extensions don't support modules in content scripts.
  */
-// import("./components/Demo");
-import * as $ from 'jquery';
+import('./jquery-1.8.3.js');

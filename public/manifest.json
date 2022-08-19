@@ -1,24 +1,29 @@
 {
   "manifest_version": 3,
   "name": "点点工具库",
-  "version": "1.0.0",
-  "description": "点点工具库",
+  "version": "0.2.0",
+  "description": "适用于点点开黑平台队长/主持的浏览器工具插件，可以自动欢迎和自动感谢礼物",
   "background": {
-    "service_worker": "src/pages/background/index.js"
+    "service_worker": "src/pages/background/index.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "src/pages/popup/index.html",
     "default_icon": "notice_avatar.png"
   },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
   "icons": {
     "128": "notice_avatar.png"
   },
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*",
-        "<all_urls>"
+        "https://y.tuwan.com/*",
+        "http://y.tuwan.com/*"
       ],
       "js": [
         "src/pages/content/index.js"
@@ -30,7 +35,7 @@
       "resources": [
         "assets/js/*.js",
         "assets/css/*.css",
-        "icon-34.png",
+        "notice_avatar.png",
         ".png"
       ],
       "matches": [
