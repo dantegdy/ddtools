@@ -1,7 +1,7 @@
 // import * as layui  from 'layui'
 import $ from 'jquery';
 import 'layui/dist/css/layui.css';
-import './index.css';
+// import './index.css';
 import 'layui';
 import { welcome, thank, spamming } from './script';
 import { initformData, initSwitchStatus } from '@src/dataConfig';

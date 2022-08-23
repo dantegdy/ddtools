@@ -11,16 +11,22 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "antd": "^4.22.7",
     "jquery": "^3.6.0",
-    "layui": "^2.7.6"
+    "layui": "^2.7.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
     "@types/chrome": "0.0.193",
     "@types/jest": "^28.1.6",
     "@types/node": "18.0.6",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.30.6",
     "@typescript-eslint/parser": "5.30.6",
+    "@vitejs/plugin-react": "2.0.0",
     "eslint": "8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",

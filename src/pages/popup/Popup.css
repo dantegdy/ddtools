@@ -5,19 +5,19 @@
   color: #200828;
 }
 
-header {
+.App_header {
   color: #277bc0;
   text-align: center;
   font-size: 24px;
-  padding: 6px 0;
+  padding: 24px 0 0;
 }
 
 footer {
-  padding: 6px 0 12px;
+  padding: 0 0 24px;
   display: flex;
   justify-content: center;
 }
-
+/* 
 .config_box {
   border-radius: 5px;
   padding: 0px 6px 12px;
@@ -48,4 +48,4 @@ footer {
 }
 .btn_room {
   display: inline-block;
-}
+} */
