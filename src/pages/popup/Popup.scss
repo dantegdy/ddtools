@@ -15,23 +15,33 @@
 footer {
   padding: 0 0 24px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-/* 
+
 .config_box {
   border-radius: 5px;
-  padding: 0px 6px 12px;
+  padding: 12px;
   background-color: #fff4cf;
   margin: 6px 12px;
   font-size: 12px;
   vertical-align: middle;
+
+  .roomTitle {
+    display: inline-block;
+  }
+  .roomInput {
+    display: inline-block;
+    width: 120px;
+  }
+  .config_title {
+    color: #277bc0;
+    font-weight: bold;
+    font-size: 16px;
+  }
 }
 
-.config_title {
-  color: #277bc0;
-  font-weight: bold;
-  font-size: 16px;
-}
+/* 
+
 
 .config_checkbox {
   padding-left: 8px;
