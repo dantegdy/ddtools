@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import path, { resolve } from 'path';
+import react from '@vitejs/plugin-react';
 import makeManifest from './utils/plugins/make-manifest';
 import customDynamicImport from './utils/plugins/custom-dynamic-import';
 import packageJson from './package.json';
@@ -21,11 +22,11 @@ export default defineConfig({
       '@pages': pagesDir,
     },
   },
-  plugins: [makeManifest(), customDynamicImport()],
+  plugins: [react(), makeManifest(), customDynamicImport()],
   publicDir,
   build: {
     outDir,
-    // sourcemap: isDev,
+    sourcemap: isDev,
     rollupOptions: {
       input: {
         // devtools: resolve(pagesDir, "devtools", "index.html"),

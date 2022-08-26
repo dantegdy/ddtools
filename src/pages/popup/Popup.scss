@@ -1,3 +1,8 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, 'Microsoft Yahei', sans-serif;
+}
 .container {
   width: 400px;
   max-height: 700px;
@@ -38,16 +43,17 @@ footer {
     font-weight: bold;
     font-size: 16px;
   }
+
+  .config_checkbox {
+    padding-left: 8px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 /* 
 
 
-.config_checkbox {
-  padding-left: 8px;
-  display: inline-flex;
-  align-items: center;
-}
 .config_input {
   padding-top: 6px;
 }
