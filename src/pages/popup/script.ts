@@ -90,6 +90,7 @@ function spammingOnFunc() {
         x = 0;
       }
       n++;
+      console.log(random);
       $('.chat-center-inputcontent textarea').val(random);
       $('.chat-center-inputcontent .chat-center-input-left .chat-input-btn-send').click();
       console.log('当前已刷' + n + '条');

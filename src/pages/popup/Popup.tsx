@@ -5,7 +5,7 @@ import { HomeOutlined, ControlOutlined, SaveOutlined } from '@ant-design/icons';
 import '@pages/popup/Popup.scss';
 import { initformData, initSwitchStatus } from '../../dataConfig';
 import ConfigBox from './ConfigBox';
-import Spamming from './Spamming';
+import { welcome, thank, spamming } from './script';
 
 type State = {
   formData: InitformData;
@@ -16,6 +16,22 @@ type State = {
 type switchStatusType = 'welcomeSwitchStatus' | 'thankSwitchStatus' | 'spammingSwitchStatus';
 
 type formDataType = 'roomId' | 'welcomeStr' | 'thankStr' | 'spammingTime' | 'spammingStr';
+
+type spammingConfigType = {
+  title: string;
+  spammingTime: string;
+  placeholder: string;
+  inputName: formDataType;
+};
+type boxContentType = {
+  title: string;
+  describe: string;
+  placeholder: string;
+  inputName: formDataType;
+  statusName: switchStatusType;
+  text: string;
+  spammingConfig?: spammingConfigType;
+};
 
 class Popup extends React.Component<any, State> {
   constructor(props) {
@@ -28,6 +44,59 @@ class Popup extends React.Component<any, State> {
   }
 
   render(): React.ReactNode {
+    const boxContentList: boxContentType[] = [
+      {
+        title: '进入房间公屏欢迎',
+        describe: '可使用变量: 用户名：[name] ; 冠名: [host]',
+        placeholder: '请输入欢迎词',
+        inputName: 'welcomeStr',
+        statusName: 'welcomeSwitchStatus',
+        text: this.state.formData.welcomeStr,
+      },
+      {
+        title: '送礼物自动感谢',
+        describe: '可使用变量: 用户名：[name]',
+        placeholder: '请输入感谢词',
+        inputName: 'thankStr',
+        statusName: 'thankSwitchStatus',
+        text: this.state.formData.thankStr,
+      },
+      {
+        title: '自动刷屏',
+        describe: '多条请使用/斜杠分割,按顺序发送弹幕池里的内容',
+        placeholder: '请输入刷屏内容',
+        inputName: 'spammingStr',
+        statusName: 'spammingSwitchStatus',
+        text: this.state.formData.spammingStr,
+        spammingConfig: {
+          title: '刷屏间隔时间(秒)',
+          spammingTime: this.state.formData.spammingTime,
+          placeholder: '请输入秒',
+          inputName: 'spammingTime',
+        },
+      },
+    ];
+
+    const BoxContent = boxContentList.map((item) => {
+      return (
+        <ConfigBox
+          key={item.inputName}
+          boxContent={item}
+          switchOnChange={(name, status) => {
+            this.changeStatus(name, status);
+          }}
+          inputOnChange={(name, value) => {
+            this.changeText(name, value);
+          }}
+          checked={
+            this.state.switchStatus[this.state.TabId]
+              ? this.state.switchStatus[this.state.TabId]?.[item.statusName]
+              : this.state.switchStatus?.default?.[item.statusName]
+          }
+        />
+      );
+    });
+
     return (
       <div className="container">
         <header className="App_header">点点工具库</header>
@@ -55,70 +124,8 @@ class Popup extends React.Component<any, State> {
               进入房间
             </Button>
           </div>
-          <ConfigBox
-            boxContent={{
-              title: '进入房间公屏欢迎',
-              describe: '可使用变量: 用户名：[name] ; 冠名: [host]',
-              placeholder: '请输入欢迎词',
-            }}
-            text={this.state.formData.welcomeStr}
-            switchOnChange={(checked) => {
-              this.changeChecked('welcomeSwitchStatus', checked);
-            }}
-            inputOnChange={(value) => {
-              this.changeText('welcomeStr', value);
-            }}
-            checked={
-              this.state.switchStatus[this.state.TabId]
-                ? this.state.switchStatus[this.state.TabId]?.welcomeSwitchStatus
-                : this.state.switchStatus?.default?.welcomeSwitchStatus
-            }
-          />
-          <ConfigBox
-            boxContent={{
-              title: '送礼物自动感谢',
-              describe: '可使用变量: 用户名：[name]',
-              placeholder: '请输入感谢词',
-            }}
-            text={this.state.formData.thankStr}
-            switchOnChange={(checked) => {
-              this.changeChecked('thankSwitchStatus', checked);
-            }}
-            inputOnChange={(value) => {
-              this.changeText('thankStr', value);
-            }}
-            checked={
-              this.state.switchStatus[this.state.TabId]
-                ? this.state.switchStatus[this.state.TabId]?.thankSwitchStatus
-                : this.state.switchStatus?.default?.thankSwitchStatus
-            }
-          />
-          <ConfigBox
-            boxContent={{
-              title: '自动刷屏',
-              describe: '多条请使用/斜杠分割,按顺序发送弹幕池里的内容',
-              placeholder: '请输入刷屏内容',
-              spammingConfig: {
-                title: '刷屏间隔时间(秒)',
-                spammingTime: this.state.formData.spammingTime,
-                placeholder: '请输入秒',
-              },
-            }}
-            text={this.state.formData.spammingStr}
-            switchOnChange={(checked) => {
-              this.changeChecked('spammingSwitchStatus', checked);
-            }}
-            inputOnChange={(value) => {
-              this.changeText('spammingStr', value);
-            }}
-            checked={
-              this.state.switchStatus[this.state.TabId]
-                ? this.state.switchStatus[this.state.TabId]?.spammingSwitchStatus
-                : this.state.switchStatus?.default?.spammingSwitchStatus
-            }
-          />
+          <div>{BoxContent}</div>
         </div>
-        <Divider></Divider>
         <footer>
           <Button
             type="primary"
@@ -131,17 +138,6 @@ class Popup extends React.Component<any, State> {
           >
             恢复默认
           </Button>
-          <Button
-            type="primary"
-            icon={<SaveOutlined />}
-            onClick={() => {
-              const { formData } = this.state;
-              this.setData({ formData });
-              message.success('保存设置成功');
-            }}
-          >
-            保存设置
-          </Button>
         </footer>
       </div>
     );
@@ -153,7 +149,6 @@ class Popup extends React.Component<any, State> {
 
   async getData() {
     await chrome.storage.local.get(['formData', 'switchStatus'], (item) => {
-      console.log(item);
       this.setState({
         formData: item.formData,
         switchStatus: item.switchStatus,
@@ -166,7 +161,7 @@ class Popup extends React.Component<any, State> {
       TabId: tab.id,
     });
   }
-  changeChecked(Str: switchStatusType, type: boolean) {
+  changeStatus(Str: switchStatusType, type: boolean) {
     const { TabId } = this.state;
     const { switchStatus } = JSON.parse(JSON.stringify(this.state));
     if (!switchStatus[TabId]) {
@@ -176,11 +171,26 @@ class Popup extends React.Component<any, State> {
     this.setData({
       switchStatus,
     });
+    switch (Str) {
+      case 'welcomeSwitchStatus':
+        console.log('welcomeSwitchStatus', type);
+        type ? welcome.on() : welcome.off();
+        break;
+      case 'thankSwitchStatus':
+        console.log('thankSwitchStatus', type);
+        type ? thank.on() : thank.off();
+        break;
+      case 'spammingSwitchStatus':
+        console.log('spammingSwitchStatus', type);
+        type ? spamming.on() : spamming.off();
+        break;
+    }
   }
 
   changeText(Str: formDataType, value: string) {
     const { formData } = JSON.parse(JSON.stringify(this.state));
     formData[Str] = value;
+    this.setData({ formData });
     this.setState({
       formData,
     });

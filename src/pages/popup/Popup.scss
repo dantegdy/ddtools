@@ -5,7 +5,6 @@ body {
 }
 .container {
   width: 400px;
-  max-height: 700px;
   background-color: #fff;
   color: #200828;
 }
@@ -48,6 +47,18 @@ footer {
     padding-left: 8px;
     display: inline-flex;
     align-items: center;
+  }
+  .config_spammingConfig {
+    // display: inline-block;
+    padding: 6px 0;
+    .config_spammingConfig_title {
+      font-size: 16px;
+    }
+
+    .config_spammingConfig_input {
+      display: inline;
+      width: 80px;
+    }
   }
 }
 
